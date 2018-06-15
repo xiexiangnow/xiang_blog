@@ -1,0 +1,81 @@
+<include file="Public:header"/>
+
+<include file="Public:header_show"/>
+
+   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Mobile/ne_css/css.css"/>
+
+<div class="newspage">
+    <div class="newspage_top"><span>{$muinfo['title']}</span></div>
+
+
+    <form action="{:U('news/message')}" method="post" id="form1">
+        <div class="order">
+            <ul>
+                <li><div class="input_one"><input name='tel'placeholder="请填写电话" type="text"/></div></li><br/>
+                <li><div class="input_one"><input name="user_name" placeholder="请填写您的姓名" type="text" id="user"/></div></li><br/>
+                <li><div class="input_two"><textarea name="content" placeholder="留言内容" id="content"></textarea></div></li><br/>
+                <li><div class="input_three"><input value="提交"  type="submit" /></div></li>
+            </ul>
+        </div>
+
+    </form>
+
+
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Index/js/jquery-1.9.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugin/layer/layer1.9/layer.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        jQuery.validator.addMethod("checkAcc", function(value, element) {
+            var account = /^(17[0-9]|13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i;
+            return this.optional(element) || (account.test(value));
+        }, "手机号格式错误");
+
+      
+ 
+
+
+            //密码格式验证
+            $("#form1").validate({
+                rules: {
+                    tel:{checkAcc: true},
+                    user_name:{required:true,maxlength:10},
+                    content:{required:true,maxlength:200}
+                },
+                messages: {
+                    user_name:{required:"<span style='color:red;'>请填写姓名</span>",maxlength:"名字太长不符合规范"},
+                    content:{required:"<span style='color:red;'>请填写留言内容</span>",maxlength:"留言内容200字以内"},
+                },
+            submitHandler: function(form) {
+                $(form).ajaxSubmit({
+                    success: function(data) {
+                        if (!data.status) {
+                            layer.msg(data.info);
+                            return false;
+                        }
+                        layer.msg(data.info,'',function(){
+                            location="{:U('news/news',array('nv'=>6,'mu'=>29))}"
+                        });
+                    }
+                });
+                return false;
+            }
+        });
+    })
+</script>
+
+
+
+
+
+
+<include file="Public:footer"/>

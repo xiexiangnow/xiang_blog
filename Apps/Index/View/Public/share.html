@@ -1,0 +1,74 @@
+
+<style type="text/css">
+  .footerbtn{ border:0; display:inline-block; padding:9px 5px; width:120px; text-align:center; background-color:#E26440; color:#FFFFFF; cursor:pointer; border-radius: 3px;}
+  .footerbtn:hover{ background-color:#666666;color:#F7E7B6;}
+</style>
+
+<div style="width:100%; margin-top:10px; margin:0 auto; margin-left:10px; display:table;min-line:150px;">
+<table  border="0" cellpadding="0" cellspacing="0" style="padding:10px;width:100%;">
+ <!-- 
+  <tr>
+     <td colspan="5" style="border-top:1px solid #dfdfdf; padding-bottom:10px;">
+       <p style="font-size:12px; line-height:23px;color:#DF6773;">
+       <span class="glyphicon glyphicon-phone-alt"></span>  
+       Tel：18502368717<br/>
+       <span class="glyphicon glyphicon-envelope"></span> 
+       E-mail：524414842@qq.com<br/>
+       <span class="glyphicon glyphicon-tag"></span> 
+       地址：重庆市江北区观音桥<br/>
+       <span class="glyphicon glyphicon-leaf"></span>  
+        每一个成功者都有一个开始，勇于开始，才能找到成功的路！
+       </p> 
+       </td>
+    </tr>
+ -->
+    <tr>
+    <!--
+       <td width="30%" align="center" style="padding:10px;">
+         <a href="{:U('News/13-18')}" title="点击留言">
+              <input type="but" class="footerbtn" value="给我留言" />
+         </a>          
+       </td>
+       -->
+       <td width="20%" style="padding:10px;"><!--分享--> <h1 style="font-size:12px; line-height:23px;">分享一下：</h1>
+           <div class="bdsharebuttonbox">
+                <a href="#" class="bds_more" data-cmd="more"></a>
+                <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              
+           </div>       
+     </td>
+       <td width="10%" align="right" style="padding:10px;"><div >
+           <?php
+             $url= curPageURL();  //得到当前的URL地址
+          ?>
+              <!--二维码区域-->
+             <img src="{:U('News/qrcode', "url=".base64_encode($url))}" style="width:100%;"/>      
+       </td>
+       <td width="40%" style="padding:10px;max-width:370px;">
+
+           <div style="font-size:12px;max-width:370px;" class="evm">
+              <h1 style="font-size:12px; line-height:23px;">用微信转发：</h1>
+              <font style="line-height:30px;">扫一扫，分享该页面！</font>
+          </div>
+      </td>
+    </tr>
+ </table>
+</div>
+<script>
+      window._bd_share_config={
+          "common":{
+              "bdSnsKey":{},
+              "bdText":"",
+              "bdMini":"2",
+              "bdMiniList":false,
+              "bdPic":"",
+              "bdStyle":"0",
+              "bdSize":"16"
+          },
+          "share":{}
+      };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  </script>

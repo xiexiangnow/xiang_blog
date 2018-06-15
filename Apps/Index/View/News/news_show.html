@@ -1,0 +1,96 @@
+<include file="Public:header"/>
+
+
+    <div id="content" class="site-content">
+           
+      <div> 
+              <!--路径导航-->
+                <ol class="breadcrumb">
+                   <li><a href="/"><span class="glyphicon glyphicon-home"> 首页</span></a></li>
+                   <li><a href="{:U('news/'.$navinfo['id'])}">{$navinfo['title']}</a></li>
+                   <li class="active">{$muinfo['title']}</li>
+                </ol>
+               <!--路径导航-->
+      </div>
+            <include file="Public:nav_list"/>  <!--二级导航-->
+
+      <div class="top-section" ></div>
+
+      <div class="container main-content-area" >
+        <div class="row">
+          <div class="main-content-inner col-sm-12 col-md-8 pull-left">
+
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+      <!--正文部分-->
+              <article id="post-62" class="post-62 post type-post status-publish format-standard hentry category-note tag-nginx tag-php">
+                 <div class="post-inner-content">
+                 <header class="entry-header page-header">
+
+                <h3 class="entry-title"><span class="glyphicon glyphicon-share-alt"></span> {$base['title']}</h3>
+
+                <div class="entry-meta">
+                  <span class="posted-on"><i class="fa fa-calendar"></i> <time class="entry-date published" datetime="2015-07-04T21:09:56+00:00"><span class="glyphicon glyphicon-time"></span> <?php echo date('Y-m-d H:i:s',$base['time'])?></time>
+                 </span>
+
+                  <span class="cat-links"><i class="fa fa-folder-open-o"></i>
+                      <span class="glyphicon glyphicon-eye-open"></span> 浏览量：{$base['view']}
+                  </span>
+                          
+                </div><!-- .entry-meta -->
+                  </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                <!--文章内容-->
+                  {:htmlspecialchars_decode($info['content'])}
+                </div><!-- .entry-content -->
+
+                <footer class="entry-meta">
+
+                            <!-- tags -->
+                      <div class="tagcloud">
+
+                          <a href="">{$muinfo['title']}</a> <a href="">php</a> 
+                      </div>
+                      <!-- end tags -->
+                      
+                </footer><!-- .entry-meta -->
+              </div>
+            </article><!-- #post-## -->
+
+            <div class="aboutFoot">
+                     <notempty name="pre">
+                       <span class="previous" style="float:left;">上一篇：<a href="{:U('show/'.$pre['id'])}" title="{$pre['title']}">{:subs($pre['title'],20)}</a></span>
+                     </notempty>
+                      <notempty name="next">
+                       <span class="next" style="float:right;">下一篇：<a href="{:U('show/'.$next['id'])}"  title="{$next['title']}">{:subs($next['title'],20)}</a></span>
+                      </notempty>
+                  </div>
+
+            <include file="Public:share"/><!--分享底部-->
+
+           <div id="comments" class="comments-area">
+               <!-- <h2 class="comments-title">
+                One thought on &ldquo;<span>{$base['title']}</span>&rdquo;</h2>-->
+         
+         <!--友言评论-->
+                <!-- UY BEGIN -->
+              <!--
+                <div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+                -->
+                <!-- UY END -->
+          <!--友言评论-->
+          <!--多说评论-->
+              <include file="Public:discuss"/>
+          <!--多说评论-->
+                        
+              <!-- #post-## --> </main>
+              <!-- #main -->
+            </div>
+            <!-- #primary -->
+          </div>
+
+<include file="Public:right"/>    <!--加载右边区域-->
+
+<include file="Public:footer"/>

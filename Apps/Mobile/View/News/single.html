@@ -1,0 +1,57 @@
+<include file="Public:header_show"/>
+
+
+<div class="newspage">
+    <div class="newspage_top"><span>{$muinfo['title']}</span></div>
+    <div class="news_bottom">
+
+
+
+
+
+
+        <!--<h2>{$base['title']}</h2>-->
+        <!--<span class="time">{$base['time']|date="Y-m-d",###}</span>-->
+
+        <eq name="base['coverimg_show']" value="1">
+            <notempty name="base['coverimg']">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <img src="{$base['coverimg']}" style="max-width: 600px;">
+                </div>
+            </notempty>
+        </eq>
+        {:htmlspecialchars_decode($info['content'])}
+
+        <?php
+                //下载
+                if(4==$base['module']){
+                  $ary = string2array($info['sourceurls']);
+                  foreach($ary as $val){
+                ?>
+        <div style="text-align: center; margin-bottom: 10px;">
+            <a href="{$val['url']}" title="点击下载" target="_blank">点击下载</a>
+        </div>
+        <?php
+                 }
+                }
+            ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+<include file="Public:footer"/>

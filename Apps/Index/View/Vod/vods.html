@@ -1,0 +1,61 @@
+<include file="Public:header" />
+
+<div class="index_nav_container">
+
+	<div class="list_banner">
+		<div class="list_banner_box"></div>
+	</div>
+	<div class="main">
+		<h1 class="f12 m_tb10">您现在位置是：<a href="/">首页</a> > <a href="{:U('index',array('nv'=>$navinfo['id']))}">{$navinfo['title']}</a> > {$muinfo['title']}</h1>
+
+		<div class="box list_main">
+			<div class="list_news_l">
+				<ul>
+					<volist name="snvlist" id="vo">
+					<li <if condition="$vo['id'] eq $muinfo['id']">class="hover"</if>>
+						<a href="{:U('index',array('nv'=>$vo['pid'],'mu'=>$vo['id']))}">
+						 {$vo.title}
+						</a>
+					</li>
+					</volist>	
+				</ul>
+			</div>
+			<div class="list_news_r p10">
+				<ul>
+				    <volist name="list" id="vo">
+					<li>
+						<div class="list_news_box"><img width="180px" src="{$vo['coverimg']}"></div>
+						<dl>
+							<h1>
+								<a href="{:U('info',array('nv'=>$navinfo['id'],'mu'=>$muinfo['id'],'id'=>$vo['id']))}">{$vo['title']}</a>
+							</h1>							
+							<p>
+								讲师：
+								<font class="green_z m_r5">{$vo['teacher']}</font>
+								发布时间：
+								<font class="verdana green_z m_r5">{$vo['time']|date="Y-m-d",###}</font>
+								<span class="f_r">
+									已有
+									<font class="verdana green_z">99</font>
+									人评论
+									<font class="verdana green_z">99</font>
+									关注
+							</p>
+							<p>课程:{$vo['info']}</p>
+							</span>
+						</dl>
+					</li>
+					</volist>					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="vod_main">
+		<div class="vod_main_box">
+			<div class="link"></div>
+		</div>
+	</div>
+</div>
+
+<include file="Public:footer" />

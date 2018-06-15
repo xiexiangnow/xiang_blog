@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>        
+<title>
+  <if condition="$base['title'] eq null">
+	   {$navinfo['title']}-{:C('SITE_NAME')}
+	<else/>
+	   {$base['title']}-{$navinfo['title']}-{:C('SITE_NAME')}
+	</if>
+</title>
+
+<meta name="keywords" content=" {:C('WEB_SITE_KEYWORD')}" />
+<meta name="description" content=" {:C('WEB_SITE_DESCRIPTION')}" />
+<meta id="viewport" name="viewport" content="width=320; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;"/>
+
+<link href="__CSS__/css.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
+</head>
+<style type="text/css">
+ .bot_nav ul li a{text-decoration: none;color:white;}
+</style>
+<body>
+<div class="top"> <a class="fs1 f_l" aria-hidden="true" data-icon="&#xe045;" href="#" id="back"></a> <a class="fs1 f_r" aria-hidden="true" data-icon="&#xe074;" href="{:U('Index/index')}"></a>{$navinfo['title']}</div>
+
+<div class="bot_nav">
+	<ul>
+<?php
+	$tel=C('WEB_SITE_PHONE');
+?>
+	    <li><em class="fs1" aria-hidden="true" data-icon="&#xe090;"></em><a href="tel:{$tel}">热线电话</a></li>
+			<li><em class="fs1" aria-hidden="true" data-icon="&#xe066;"></em><a href="{:U('News/news',array('nv'=>'4','mu'=>'26'))}">在线留言</a></li>
+			<li><em class="fs1" aria-hidden="true" data-icon="&#xe08b;"></em><a href="{:U('News/news',array('nv'=>'4','mu'=>'25'))}">联系我们</a>
+		</li>
+			
+	</ul>
+</div>
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.9.min.js"></script>
+<script type="text/javascript">
+    $('#back').click(function(){
+        document.location='javascript:history.go(-1);';
+    })
+</script>

@@ -1,0 +1,220 @@
+<include file="Public:header"/>
+<!--++++++++++++++++++++个人简历页面++++++++++++++++++++++++++-->
+    <div id="content" class="site-content">
+           
+      <div> 
+              <!--路径导航-->
+                <ol class="breadcrumb">
+                  <li><a href="/"><span class="glyphicon glyphicon-home"> 首页</span></a></li>
+                   <li><a href="{:U('news/'.$navinfo['id'])}">{$navinfo['title']}</a></li>
+                  <li class="active">{$muinfo['title']}</li>
+                </ol>
+               <!--路径导航-->
+      </div>
+            <include file="Public:nav_list"/>  <!--二级导航-->
+
+      <div class="top-section" ></div>
+
+      <div class="container main-content-area" >
+        <div class="row">
+          <div class="main-content-inner col-sm-12 col-md-8 pull-left">
+
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+      <!--正文部分-->
+              <article id="post-62" class="post-62 post type-post status-publish format-standard hentry category-note tag-nginx tag-php">
+                 <div class="post-inner-content">
+                 <header class="entry-header page-header">
+
+                <h2 class="entry-title "><span class="glyphicon glyphicon-share-alt"></span> {$muinfo['title']}</h2>
+
+
+
+
+                <div class="entry-meta">
+                  <!--在 “关于我们” 中不需要显示  时间 和浏览量  -->
+                  
+
+                </div><!-- .entry-meta -->
+                  </header><!-- .entry-header -->
+
+                <div class="entry-content">
+                <!--文章内容-->
+                     <table class="table table-bordered">
+                     <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-user"> 基本信息</span></button>
+                          <tr>
+                          	<td width="15%">姓名：</td>
+                          	<td>{$re_info['name']}</td>
+                          	<td width="15%">出生日期：</td>
+                          	<td>{$re_info['birthday']}</td>
+                          </tr>
+                          <tr>
+                          	<td>性别：</td>
+                          	<td>
+                            <?php
+                          	  echo $re_info['sex']==1?'男':'女';
+                          	?>
+                            </td>
+                          	<td>民族：</td>
+                          	<td>{$re_info['nation']}</td>
+                          </tr>
+                          <tr>
+                          	<td>学历：</td>
+                          	<td>{$re_info['xueli']}</td>
+                          	<td>籍贯：</td>
+                          	<td>{$re_info['native']}</td>
+                          </tr>
+                          <tr>
+                          	<td>专业：</td>
+                          	<td>{$re_info['specialty']}</td>
+                          	<td>毕业院校：</td>
+                          	<td>{$re_info['school']}</td>
+                          </tr>
+                          <tr>
+                          	<td>Tel：</td>
+                          	<td>{$re_info['tel']}</td>
+                          	<td>E-mail：</td>
+                          	<td>{$re_info['email']}</td>
+                          </tr>
+                          <tr>
+                          	 <td colspan="4" align="right" style="padding-right:20px;">想看照片可以点击右边的“关于我” |  或者“相册”栏目 <span class="glyphicon glyphicon-hand-right"></span> </td>
+                          </tr>
+					</table>
+					<table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-book"> 教育背景</span></button>
+							<tr>
+								<td>{$re_info['education']}</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-send"> 求职意向</span></button>
+							<tr>
+								<td>{$re_info['job']}</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-folder-open"> 专业技能</span></button>
+                            <tr>
+                               <td>
+								{:htmlspecialchars_decode($re_info['technical_skill'])}
+                               </td>
+                            </tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-folder-close"> 开发工具</span></button>
+							<tr>
+								<td>{$re_info['tools']}</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-facetime-video"> 工作经历</span></button>
+							{:htmlspecialchars_decode($re_info['work_experience'])}
+
+				    </table>
+				     <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-th-list"> 实战项目</span></button>
+							<tr>
+								<td>
+									<table class="table table-bordered">
+									    <tr>
+									    	<th>项目名称</th>
+									    	<th>正式域名</th>
+									    	<th>开发框架</th>
+									    	<th align="center">是否带手机站</th>
+									    </tr>
+                                        <volist name="pro_list" id="vo">
+                                        <tr >
+                                            <td>{$vo['pro_name']}</td>
+                                            <td><a href="http://{$vo['pro_web']}" target="_blank" title="点击预览">{$vo['pro_web']}</a></td>
+                                            <td>{$vo['pro_jia']}</td>
+                                            <td align="center">
+                                                <?php
+                                                 if($vo['is_mobile']==1){
+                                                    echo "是";
+                                                 }elseif($vo['is_mobile']==2){
+                                                    echo "否";
+                                                 }elseif($vo['is_mobile']==3){
+                                                    echo "自适应";
+                                                 }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        </volist>
+									</table>
+                  <table class="table table-bordered">
+                     <tr>
+                       <td width="50%">项目名称</td>
+                       <td>微信公众号</td>
+                     </tr>
+                     <tr>
+                       <td>香港购物城（在建项目）</td>
+                       <td><span style="color:#DA4453">NEWHK-023</span></td>
+                     </tr>
+                     <tr>
+                       <td>韩国SOW新品</td>
+                       <td><span style="color:#DA4453">NEW-SOW</span></td>
+                     </tr>
+                  </table>
+								</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-bookmark"> 技术鉴定</span></button>
+							<tr>
+								<td>{$re_info['technical']}</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-headphones"> 兴趣爱好</span></button>
+							<tr>
+								<td>{$re_info['interest']}</td>
+							</tr>
+				    </table>
+				    <table class="table table-condensed">
+					<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-comment"> 自我评价</span></button>
+							<tr>
+								<td>&nbsp;&nbsp;&nbsp;&nbsp;{$re_info['self_assessment']}</td>
+							</tr>
+				    </table>
+				    <p><span class="glyphicon glyphicon-random">（支持网页打印）</span></p>
+                </div><!-- .entry-content -->
+
+                <footer class="entry-meta">
+
+                            <!-- tags -->
+                      <div class="tagcloud">
+
+                          <a href="">{$muinfo['title']}</a> 
+                      </div>
+                      <!-- end tags -->
+                      
+                </footer><!-- .entry-meta -->
+              </div>
+            </article><!-- #post-## -->
+
+
+            <include file="Public:share"/><!--分享底部-->
+
+           <div id="comments" class="comments-area">
+               <!-- <h2 class="comments-title">
+                One thought on &ldquo;<span>{$base['title']}</span>&rdquo;</h2>-->
+         
+         <!--友言评论-->
+                <!-- UY BEGIN -->
+                <!--<div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>-->
+                <!-- UY END -->
+          <!--友言评论-->
+          <!--多说评论-->
+                 <include file="Public:discuss"/>
+          <!--多说评论-->
+                        
+              <!-- #post-## --> </main>
+              <!-- #main -->
+            </div>
+            <!-- #primary -->
+          </div>
+
+<include file="Public:right"/>    <!--加载右边区域-->
+
+<include file="Public:footer"/>

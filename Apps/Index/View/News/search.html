@@ -1,0 +1,106 @@
+<include file="Public:header"/>
+
+<div id="content" class="site-content">
+
+    <div>
+        <!--路径导航-->
+        <ol class="breadcrumb">
+            <li><a href="/"><span class="glyphicon glyphicon-home"> 首页</span></a></li>
+            <li>搜索结果</li>
+        </ol>
+        <!--路径导航-->
+    </div>
+
+    <include file="Public:nav_list"/>  <!--二级导航-->
+
+
+    <div class="top-section" ></div>
+
+    <div class="container main-content-area" >
+        <div class="row">
+            <div class="main-content-inner col-sm-12 col-md-8 pull-left">
+
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+
+
+
+                        <article id="post-5"
+                                 class="post-5 post type-post status-publish format-aside hentry category-informal-essay post_format-post-format-aside">
+                            <div class="blog-item-wrap">
+                                <a href="" title="Hello"> </a>
+                                <div class="post-inner-content">
+                                    <header class="entry-header page-header">
+                                        <h3 class="entry-title">
+                                            <a href="" rel="bookmark"><span class="glyphicon glyphicon-triangle-right"></span> 搜索结果</a>
+                                        </h3>
+
+                                        <if condition="$doc_list neq null">
+                                            <div class="entry-meta">
+                                                <style type="text/css">
+                                                    .panel-body a:hover{color:blue;}
+                                                </style>
+                                                <!--文章列表-->
+                                                <volist name="doc_list" id="vo">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <a href="{:U('news/show',array('id'=>$vo['id']))}" title="{$vo['title']}"><h4>{$vo['title']}</h4></a>
+
+                                     <span style="float:right;">
+                                     <span class=" glyphicon glyphicon-time"></span>
+                                         <?php echo date('Y-m-d H:i:s',$vo['time'])?>
+                                         | 浏览量：{$vo['view']}  | 　<span class="glyphicon glyphicon-tag"></span><span class="label label-default"><?php echo $vo['article_type']?$vo['article_type']:'未填写'?></span>
+                                     </span>
+                                                        </div>
+                                                        <div class="panel-footer">
+                                                            <span class="glyphicon glyphicon-paperclip"></span>
+                                                            <span style="color:#363636;">简介：</span><?php echo $vo['description']?$vo['description']:'暂无介绍';?></div>
+                                                    </div>
+                                                </volist>
+                                                <!--文章列表-->
+                                            </div>
+                                            <else/>
+                                            <div style="margin-top:108px;font-size:14px;">
+                                                <div style="color:#DA4453;text-align:center;">
+                                                    <span class="glyphicon glyphicon-hourglass"></span> 没有搜索到相关数据...
+                                                </div>
+                                                <p style="margin-top:70px;"><span class="glyphicon glyphicon-search"></span> 您可以看看其他相关内容：</p>
+                                                <ul class="list-group">
+                                                    <volist name="dian_more_list" id="vo">
+                                                        <li class="list-group-item">
+                                                            <span class="badge" title="浏览量" style="cursor: pointer;">{$vo['view']}</span>
+                                                            <a href="{:U('news/show',array('id'=>$vo['id']))}" title="{$vo['title']}" target="_blank">{$vo['title']}</a>
+                                                        </li>
+                                                    </volist>
+                                                </ul>
+
+
+                                            </div>
+                                        </if>
+                                        <!-- .entry-meta -->
+                                    </header>
+                                    <!-- .entry-header -->
+
+                                    <div class="entry-content">
+
+
+
+                                        <p >
+
+                                            {$page}
+
+
+                                    </div>
+                                </div>
+                        </article>
+                        <!-- #post-## --> </main>
+                    <!-- #main -->
+                </div>
+                <!-- #primary -->
+
+            </div>
+
+            <include file="Public:right"/>    <!--加载右边区域-->
+
+
+            <include file="Public:footer"/>

@@ -1,0 +1,133 @@
+<!doctype html>
+<!--[if !IE]>
+  <html class="no-js non-ie" lang="zh-CN"> <![endif]-->
+<!--[if IE 7 ]>
+  <html class="no-js ie7" lang="zh-CN"> <![endif]-->
+<!--[if IE 8 ]>
+  <html class="no-js ie8" lang="zh-CN"> <![endif]-->
+<!--[if IE 9 ]>
+  <html class="no-js ie9" lang="zh-CN"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="{:C('WEB_SITE_KEYWORD')}" />
+<meta name="description" content="{:C('WEB_SITE_DESCRIPTION')}" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" />
+<link rel="icon" sizes="192x192" href="__PUBLIC__/Index/icon.png">
+<title>
+<notempty name="doc_title">{$doc_title} -</notempty> 
+<notempty name="navinfo['title']">{$navinfo['title']}-</notempty> {:C('SITE_NAME')}
+</title>
+<script type="text/javascript">
+      // window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.lilonghe.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.3"}};
+      // !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+<link rel='stylesheet' id='sparkling-bootstrap-css' href='__PUBLIC__/Index/css/bootstrap.min.css?ver=4.2.3' type='text/css' media='all' />
+<link rel="stylesheet" href="__PUBLIC__/Index/css/bootstrap-theme.min.css?ver=4.2.3">
+<link rel='stylesheet' id='sparkling-icons-css' href='__PUBLIC__/Index/css/font-awesomes.min.css?ver=4.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-style-css' href='__PUBLIC__/Index/css/style.css?ver=4.2.3' type='text/css' media='all' />
+  <script type='text/javascript' src='__PUBLIC__/Index/js/jquery-1.9.min.js?ver=1.11.2'></script>
+<script type='text/javascript' src='__PUBLIC__/Index/js/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='__PUBLIC__/Index/js/modernizr.min.js?ver=4.2.3'></script>
+<script type='text/javascript' src='__PUBLIC__/Index/js/bootstrap.min.js?ver=4.2.3'></script>
+<script type='text/javascript' src='__PUBLIC__/Index/js/functions.min.js?ver=4.2.3'></script>
+<meta name="generator" content="WordPress 4.2.3" />
+
+</head>
+<body class="home blog">
+  <div id="page" class="hfeed site">
+
+    <header id="masthead" class="site-header" role="banner">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="row">
+            <div class="site-navigation-inner col-sm-12">
+              <div class="navbar-header">
+                 <button type="button" class="btn navbar-toggle"
+                  data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              <!--logo-->
+                <div id="logo">
+                  <span class="site-name">
+                    <a class="navbar-brand" href="/"
+                      title="回到首页" rel="home"><span class="name">
+                      <span class="glyphicon glyphicon-home"></span>  
+                      谢翔 <span class="glyphicon glyphicon-leaf"></span> Blog<p style="font-size:12px;margin-left:80px;"> &minus; &clubs; 学无止境 &clubs;</p></span></a>
+                  </span>
+                </div>
+                <!-- end of #logo -->
+              </div>
+            <!--导航区域-->
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="menu-about" class="nav navbar-nav">
+                      <li id="menu-item-27" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-27" >
+                        <a title="Home" href="/" >首页</a>
+                      </li>
+
+                     <volist name="menu_list" id="mu" key="k">
+                        <li id="menu-item-69"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69" >
+                          <a title="Blog" href="{:U('news/'.$mu['id'])}">{$mu['title']}</a>
+                        </li>
+                     </volist>
+
+                    </li>
+
+                    <?php
+                    if($_SESSION['I_username']){
+                    ?>
+                      <li id="menu-item-69"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69" style="float:right;">
+                         <a title="Home" href="javascript:void(0)" onclick="login_out()"> <button type="button" class="btn btn-default btn-xs">退出</button></a>
+                     </li>
+                    <li id="menu-item-69"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69" style="float:right;">
+                        <a title="Home" href="#" > <button type="button" class="btn btn-default btn-xs">发布</button></a>
+                    </li>
+                    <?php
+                    }
+                    ?>
+
+
+                    <li id="menu-item-69"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69" style="float:right;">
+                   <?php
+                    if($_SESSION['I_username']){
+                    ?>
+                        <a>欢迎您，{$Think.session.I_username}</a>
+                   <?php
+                    }else{
+                   ?>
+                        <a title="Home" href="{:U('Login/index')}" > <button type="button" class="btn btn-default btn-xs">登录</button></a>
+                   <?php
+                   }
+                   ?>
+                    </li>
+                </ul> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- .site-navigation -->
+    </header>
+    <!-- #masthead -->
+
+
+      <script type="text/javascript" src="__PUBLIC__/Plugin/layer/layer1.9/layer.js"></script>
+      <script type="text/javascript">
+        //退出的js操作
+          function login_out(){
+              $.get("{:U('Login/login_out')}",'',function(e){
+                  //alert(e);
+                  if(1==e){
+                      layer.msg('成功退出！',{offset: 400, shift: 1});
+                      window/setTimeout("window.location=\"{:U('Index/index')}\"",1000);
+                  }
+              })
+          }
+      </script>

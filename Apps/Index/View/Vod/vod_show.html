@@ -1,0 +1,51 @@
+<include file="Public:header" />
+
+<div class="index_nav_container">
+
+
+	<div class="vod_banner">
+		<h1 class="f23 m_b10 green_z" style="margin: 10px auto; color: #FFFFFF; width: 1200px;">{$base['title']}</h1>
+		<div class="vod_banner_box  box" style="width: 1200px;">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+				<?php
+				       $vedio_ary = string2array($info['sourceurls']);
+                       $path = $vedio_ary[0]['url'];
+                       $vod_width = 860 ;
+                       $vod_height = 485 ; 
+				?>
+					<td width="{$vod_width}" height="{$vod_height}" bgcolor="#000000">
+                      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                      codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="{$vod_width}" height="{$vod_height}">
+                      <param name="movie" value="__PLUGIN__/vcastr22.swf?vcastr_file=<?php echo $path?>">
+                      <param name="quality" value="high">
+                      <param name="allowFullScreen" value="true" />
+                      <embed src="__PLUGIN__/vcastr22.swf?vcastr_file=<?php echo $path?>"
+                      quality="high"
+                      allowFullScreen="true"
+                      DefaultVolume=85
+                      pluginspage="http://www.macromedia.com/go/getflashplayer"
+                      type="application/x-shockwave-flash"  width="{$vod_width}" height="{$vod_height}">
+                      </embed>
+                      </object> 
+                    </td>
+					<td width="21%" valign="top">
+						<div class="p10">
+							<p class="f14 m_b5 green_z">本课程共5集 更新至第5集</p>
+							<p class="f14 m_b5">课程介绍 “汉语口语美学”跨汉语</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	
+	<div class="main">
+		<h1 class="f12 m_tb10">您现在位置是：教学资源案例库 > 体育课</h1>
+
+		<div class="box course_main border_t2">sdadsadsadsads</div>
+	</div>
+
+
+<include file="Public:footer" />

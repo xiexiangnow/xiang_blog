@@ -1,0 +1,87 @@
+<include file="Public:header" />
+
+<div class="index_nav_container">
+
+	<div class="vod_banner">
+		<div class="vod_banner_box p20 box">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="21%">
+						<img src="{$base['coverimg']}" width="380" height="285" />
+					</td>
+					<td width="79%" valign="top">
+						<div class="p20">
+							<h1 class="f23 m_b10 green_z">{$base['title']}</h1>
+							<p class="f14 m_b5 green_z">{$base['info']}</p>
+							<p class="f14 m_b5">课程介绍:
+								{$base['content']}
+                            </p>
+							<div class="p10">
+								<div class="fenxiang">
+									<img src="__PUBLIC__/Index/img/fx/1.png" />
+								</div>
+								<div class="fenxiang">
+									<img src="__PUBLIC__/Index/img/fx/2.png" />
+								</div>
+								<div class="fenxiang">
+									<img src="__PUBLIC__/Index/img/fx/3.png" />
+								</div>
+								<div class="fenxiang">
+									<img src="__PUBLIC__/Index/img/fx/4.png" />
+								</div>
+								<div class="fenxiang">
+									<img src="__PUBLIC__/Index/img/fx/5.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="main">
+		<h1 class="f12 m_tb10">您现在位置是：<a href="/">首页</a> > <a href="{:U('index',array('nv'=>$navinfo['id']))}">{$navinfo['title']}</a> > {$muinfo['title']} > {$base['title']}</h1> 
+
+		<div class="box course_main border_t2">
+			<table width="100%" height="823" border="0" cellpadding="0"
+				cellspacing="0">
+				<tr>
+					<td width="78%" valign="top"
+						style="border-right: 1px solid #dfdfdf;">
+						<div class="course_main_info">
+							<ul>
+							<volist name="list" id="vo">
+								<li>
+									<span>
+										发布时间：
+										<font class="green_z">{$vo['time']|date='Y-m-d',###}</font>
+										&nbsp;评论数：
+										<font class="green_z">33</font>
+									</span>
+									<a href="{:U('show',array('nv'=>$navinfo['id'],'mu'=>$muinfo['id'],'id'=>$vo['id'],'sid'=>$base['id']))}">{$vo['title']}</a>
+								</li>
+								</volist>
+							</ul>
+						</div>
+					</td>
+					<td width="22%" valign="top">
+						<div class="p10 border_b1">
+							<h2 class="f16">讲师名称：{$base['teacher']}</h2>
+							<br />
+							<p class="f12">
+								{:formatdb($base['tinfo'])}							
+							</p>
+						</div>
+						<div class="p10 border_b1">
+							<h2 class="f16">所属系：{$base['tsystem']}</h2>
+							</p>
+						</div>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<include file="Public:footer" />

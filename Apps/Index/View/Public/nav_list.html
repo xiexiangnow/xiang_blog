@@ -1,0 +1,12 @@
+<div style="text-align:center;">
+            <!--二级导航-->
+                <ul class="nav nav-pills" style="max-width:1130px;margin:0 auto;">
+                   <volist name="snvlist" id="smu">
+                      <if condition="$smu['is_nav'] eq 1">  <!--后台让其显示才显示-->
+                          <li role="presentation" <if condition="$smu['id'] eq $param['mu']">class="active"</if>>
+                          <a href="{:U('news/'.$navinfo['id'].'-'.$smu['id'])}">{$smu['title']}</a></li>
+                        </if>
+                      </volist>
+                </ul>
+
+            </div>

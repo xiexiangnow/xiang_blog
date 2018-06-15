@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>        
+
+<title>
+	{:C('SITE_NAME')}
+</title>
+<meta name="keywords" content=" {:C('WEB_SITE_KEYWORD')}" />
+<meta name="description" content=" {:C('WEB_SITE_DESCRIPTION')}" />
+
+<meta id="viewport" name="viewport" content="width=320; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;"/>
+
+<link href="__CSS__/css.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
+</head>
+<style type="text/css">
+ .bot_nav ul li a{text-decoration: none;color:white;}
+ a{text-decoration: none;}
+</style>
+<body>
+<div class="top">渝辣记首页</div>
+<div class="bot_nav">
+<?php
+	$tel=C('WEB_SITE_PHONE');
+?>
+	<ul>
+		<li><em class="fs1" aria-hidden="true" data-icon="&#xe090;"></em><a href="tel:{$tel}">热线电话</a></li>
+		<li><em class="fs1" aria-hidden="true" data-icon="&#xe066;"></em><a href="{:U('News/news',array('nv'=>'4','mu'=>'26'))}">在线留言</a></li>
+		<li><em class="fs1" aria-hidden="true" data-icon="&#xe08b;"></em><a href="{:U('News/news',array('nv'=>'4','mu'=>'25'))}">联系我们</a></li>
+	</ul>
+
+</div>
+<div class="logo_bj" style=" height:423px;"><img src="__IMG__/logo.png" style="  max-height:400px;" /></div>
+<div class="main_nav">
+<ul>
+<li class="col_1"><div class="ico"><a href="{:U('News/news',array('nv'=>'1'))}"><img src="__IMG__/ico_01.png" /></a></div><a href="#">介绍</a></li>
+<li class="col_2"><div class="ico"><a href="{:U('News/news',array('nv'=>'36'))}"><img src="__IMG__/ico_02.png" /></a></div><a href="#">展示</a></li>
+<li class="col_3"><div class="ico"><a href="{:U('News/news',array('nv'=>'3'))}"><img src="__IMG__/ico_03.png" /></a></div><a href="#">连锁</a></li>
+</ul>
+</div>
+
+<div class="biaoti"><span><a href="{:U('News/news',array('nv'=>'2'))}"><img src="__IMG__/more.png" style="width:70px; margin-right:15px;"/></a></span><h1>加盟信息</h1></div>
+<div class="info">
+<ul>
+    <volist name="news" id="vo">
+      <li><a href="{:U('News/show',array('id'=>$vo['id']))}">{:subs($vo['title'],20)} </a> <span style="float:right;margin-right:10px;"><?php echo date('Y-m-d',$vo['time'])?></span></li>
+	</volist>
+</ul>
+</div>
+
+
+<!--回到顶部 =====start-->
+<style type="text/css">
+  .to-top { display: none;padding:14px  10px;margin-bottom:50px; border-radius:50%; color: #fff; background-color:#B2202B;}
+  .to-top:hover{background-color:#FE0000;color:#fff;}
+</style>
+
+<a class="to-top" title="回到顶部"  style="text-decoration:none;">TOP</a>
+<script src="__PUBLIC__/Mobile/top/js/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC__/Mobile/top/js/jquery.toTop.min.js"></script>
+<script>
+$(function() {
+  $('.to-top').toTop();
+});
+</script>
+<!--回到顶部 =====end-->
+</body>
+</html>

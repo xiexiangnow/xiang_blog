@@ -1,0 +1,237 @@
+<include file="Public:header_news" />
+
+
+<style type="text/css">
+    .sgn_1 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left 0px;
+    }
+    .sgn_2 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -13px;
+    }
+    .sgn_3 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -26px;
+    }
+    .sgn_4 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -39px;
+    }
+    .sgn_5 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -52px;
+    }
+    .sgn_6 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -65px;
+    }
+    .sgn_7 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -78px;
+    }
+    .sgn_8 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -91px;
+    }
+    .sgn_9 {
+        background: rgba(0, 0, 0, 0) url("/Public/admin/img/bg_bar.gif") repeat-x scroll left -104px;
+    }
+
+    .sgnTie{
+        height: 11px;
+    }
+    .bar {
+        background: #f0f0f0 none repeat scroll 0 0;
+        float: right;
+        height: 11px;
+        margin-top: 2px;
+        width: 132px;
+    }
+    .error{
+        color: red;
+    }
+</style>
+
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.9.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugin/layer/layer1.9/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.validate.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="list_main">
+    <div class="list_main_box">
+        <div class="list_main_container">
+            <div class="tab">你现在位置是：
+                <a href="/">首页</a>
+                >投票详情</a>
+
+              </div>
+            <div class="container_box">
+                <h1>{$gather['title']}</h1>
+
+
+
+               发布时间：{$gather.time|date="Y-m-d H:I:s",###} 浏览量：{$gather.view}
+               <h4>摘要： {$gather['description']}</h4>
+                <h6>
+                    <form action="{:U('gather')}" method="POST" id="form1" >
+
+                        <input type="hidden" name="profiles"value="{$gather['profiles']}"/>
+                        <if condition="$gather['options'] eq 1">
+                            <volist name="doc_list" id="vo" key="k">
+                                <input type="radio" name="node_id" value="{$vo['id']}"/>{$vo['content']}<br/>
+                                <?php $num = ($vo['count']/$count)*100;?>
+
+                                <span class="bar">
+                                <em class="sgn_{$k} sgnTie" style="width: {$num}%; display: inline-block;"></em>
+                                {$vo['count']}票
+                                </span>
+
+
+
+                            </volist>
+
+                            <else/>
+                            <volist name="doc_list" id="vo" key="k">
+                                <input type="checkbox" name="node_id[]" value="{$vo['id']}"/>{$vo['content']}<br/>
+                                <?php $num = ($vo['count']/$count)*100;?>
+
+                                <span class="bar">
+                                <em class="sgn_{$k} sgnTie" style="width: {$num}%; display: inline-block;"></em>
+                                {$vo['count']}票
+                                </span>
+                            </volist>
+                        </if>
+
+
+                        <input type="submit" value="提交">
+                    </form>
+                </h6>
+
+            </div>
+
+
+            <script type="text/javascript">
+
+                $("#form1").validate({
+                    rules: {
+                        "node_id": {
+                            required: true
+                        },
+                        "node_id[]": {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        "node_id": {
+                            required: "请选择投票内容"
+                        },
+                        "node_id[]": {
+                            required: "请选择投票内容"
+                        }
+                    },
+                    submitHandler: function(form) {
+
+                        $(form).ajaxSubmit({
+                            success: function(data) {
+                                if (!data.status) {
+                                    layer.msg(data.info);
+                                    return false;
+                                }
+                                /*成功刷新数据*/
+                                var id={$id};
+                                $.get("{:ACTION_NAME}",{id:id},function(e){
+                                    $("#form1").empty();
+                                    var count={$count};
+                                    var str='';
+                                    for(var i in e){
+                                        var ii=i;
+                                        ii++;
+                                        var num=(e[i].count/count)*100;
+                                    <if condition="$gather['options'] eq 1">
+                                        str +='<input type="radio" name="node_id" value="'+e[i].id+'"/>'+e[i].content+'<br/>';
+                                    <else/>
+                                        str +='<input type="checkbox" name="node_id[]" value="'+e[i].id+'"/>'+e[i].content+'<br/>';
+
+                                    </if>
+                                        str +='<span class="bar"><em class="sgn_'+ii+' sgnTie" style="width:'+num+'%; display:inline-block;"></em>'+ e[i].count+'票 </span>';
+                                    }
+                                    str += '<input type="submit" value="提交">';
+
+                                    $("#form1").append(str);
+                                });
+                                layer.msg(data.info);
+
+                            }
+                        });
+                        return false;
+                    }
+                })
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="list_main_nav"><div class="listnav_box"><ul>
+
+                <li <if condition="$vo['id'] eq $muinfo['id']">class="hover"</if> >
+
+            <a> 投票详情</a>
+                <!--<a href="{:U($navinfo['action'],array('nv'=>$vo['pid'],'mu'=>$vo['id']))}">{$vo.title}</a>-->
+                </li>
+
+        </ul></div>
+
+            <table width="100%" height="277" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><a href="{:U('News/lis',array('nv'=>39))}" target="_blank"><img
+                            src="/Public/Index/img/r_ico_01.jpg"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="{:U('News/lis',array('nv'=>41))}" target="_blank"><img
+                            src="/Public/Index/img/r_ico_02.jpg"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="{:U('News/lis',array('nv'=>43))}" target="_blank"><img
+                            src="/Public/Index/img/r_ico_03.jpg"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="{:U('News/lis',array('nv'=>45))}" target="_blank"><img
+                            src="/Public/Index/img/r_ico_04.jpg"/></a></td>
+                </tr>
+                <tr>
+                    <td><a href="{:U('News/lis',array('nv'=>47))}" target="_blank"><img
+                            src="/Public/Index/img/r_ico_05.jpg"/></a></td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div> </div>
+
+</div>
+
+<include file="Public:footer" />
+
+
+

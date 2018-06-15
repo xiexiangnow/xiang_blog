@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <notempty name="doc_title">
+            {$doc_title}  -
+        </notempty>
+    {:C('SITE_NAME')}
+
+</title>
+    <meta name="keywords" content=" {:C('WEB_SITE_KEYWORD')}" />
+    <meta name="description" content=" {:C('WEB_SITE_DESCRIPTION')}" />
+
+
+    <link href="__CSS__/css.css" rel="stylesheet" type="text/css" />
+    <script>
+        <!--
+        /*第一种形式 第二种形式 更换显示样式*/
+        function setTab(name,cursel,n){
+            for(i=1;i<=n;i++){
+                var menu=document.getElementById(name+i);
+                var con=document.getElementById("con_"+name+"_"+i);
+                menu.className=i==cursel?"hover":"";
+                con.style.display=i==cursel?"block":"none";
+            }
+        }
+        //-->
+    </script>
+</head>
+
+<body>
+<div class="head"><div class="head_main"><div style="width:100%; display:block; text-align:right; position:relative; margin-top:10px; z-index:9999;"><a href="http://www.cwnu.edu.cn/" target="_blank"><img src="/Public/Index/img/gethome.png" /></a></div>
+    <div class="search">
+        <form action="{:U('news/search')}" method="get" >
+            <input type="text" name="keywords"/>
+
+            <input type="submit" value="搜索"/>
+        </form>
+
+    </div>
+    <div class="logo"><a href="/" title=" {:C('SITE_NAME')}"><img src="__IMG__/logo.png" /></a></div>
+     <div class="flsh"><embed src="/Public/Index/img/flash.swf" width="1004" height="211" quality="high" wmode="transparent"></div>
+    </div></div>
+<div class="main_nav"><div class="main_nav_box"><ul>
+    <li><a href="/">首页</a></li>
+    <volist name="menu_list" id="menu">
+        <li <if condition="$menu['id'] eq $param['nv']">class="hover"</if> > <a href="{:U('News/'.$menu['id'])}">{$menu['title']}</a>
+            <div class="subnav">
+                <volist name="menu['child']" id="mu">
+                    <a href="{:U('News/'.$menu['id'].'-'.$mu['id'])}">{$mu['title']}</a>
+                </volist>
+            </div>
+        </li>
+    </volist>
+</ul></div></div>

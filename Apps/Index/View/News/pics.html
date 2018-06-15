@@ -1,0 +1,107 @@
+<include file="Public:header"/>
+
+<div id="content" class="site-content">
+           
+      <div> 
+          <!--路径导航-->
+          <ol class="breadcrumb">
+            <li><a href="/"><span class="glyphicon glyphicon-home"> 首页</span></a></li>
+            <li><a href="{:U('news/'.$navinfo['id'])}">{$navinfo['title']}</a></li>
+            <li class="active">{$muinfo['title']}</li>
+          </ol>
+           <!--路径导航-->
+      </div>
+           
+  <include file="Public:nav_list"/>  <!--二级导航-->
+
+      <div class="top-section" ></div>
+      <div class="container main-content-area" >
+        <div class="row">
+          <div class="main-content-inner col-sm-12 col-md-8 pull-left">
+
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+
+              <article id="post-5"
+                class="post-5 post type-post status-publish format-aside hentry category-informal-essay post_format-post-format-aside">
+                <div class="blog-item-wrap">
+                  <a href="" title="Hello"> </a>
+                  <div class="post-inner-content">
+                    <header class="entry-header page-header">
+
+                      <h3 class="entry-title">
+                        <a href="" rel="bookmark"><span class="glyphicon glyphicon-triangle-right"></span> {$muinfo['title']}</a>
+                      </h3>
+                   <!--图片列表-->
+                    <if condition="$doc_list neq null">
+                        <div class="entry-meta">
+                        <div class="row">
+                         
+                          <volist name="doc_list" id="vo">
+                            <div class="col-sm-6 col-md-4">
+                              <div class="thumbnail">
+                                <img src="{$vo['coverimg']}" alt="...">
+                                <div class="caption">
+                                  <h4>{$vo['title']}</h4>
+                                  <!--<p>{$vo['description']}</p>-->
+                                  <p style="font-size:12px;">浏览量：{$vo['view']}</p>
+                                  <p> <a href="{:U('show',array('id'=>$vo['id']))}" class="btn btn-default btn-xs" role="button">SHOW</a></p>
+                                </div>
+                              </div>
+                            </div>
+                         </volist>
+
+                        </div>
+                        </div>
+                        <!-- .entry-meta -->
+                     <else/>
+                             <div style="margin-top:108px;font-size:14px;">
+                                <div style="color:#DA4453;text-align:center;">
+                                     <span class="glyphicon glyphicon-hourglass"></span> 暂无数据，敬请期待...
+                                </div>
+                                <p style="margin-top:70px;"><span class="glyphicon glyphicon-search"></span> 您可以看看其他相关内容：</p>
+
+                                <ul class="list-group">
+                                  <volist name="dian_more_list" id="vo">
+                                      <li class="list-group-item">
+                                        <span class="badge" title="浏览量" style="cursor: pointer;">{$vo['view']}</span>
+                                        <a href="{:U('news/show',array('id'=>$vo['id']))}" title="{$vo['title']}" target="_blank">{$vo['title']}</a>
+                                      </li>
+                                  </volist>
+                                </ul>
+                                <p><span class="glyphicon glyphicon-screenshot"></span> 或者这些栏目：</p>
+                                 <!--二级栏目-->
+                                       <ul class="nav nav-pills" style="width:1130px;margin:0 auto;">
+                                         <volist name="snvlist" id="smu">
+                                            <if condition="$smu['is_nav'] eq 1">  <!--后台让其显示才显示-->
+                                                <li role="presentation" >
+                                                <a href="{:U('news/'.$navinfo['id'].'-'.$smu['id'])}">{$smu['title']}</a></li>
+                                              </if>
+                                            </volist>
+                                      </ul>
+
+                            </div>
+                     </if>
+                    </header>
+                    <!-- .entry-header -->
+                    <div class="entry-content">
+                      <p>第一次做站点，请多包涵!</p>
+                      <p >
+                      <!--分页-->
+                         {$page}
+                      <!--分页-->
+                      </p>
+                    </div>
+                    <!-- .entry-content -->
+                  </div>
+                </div>
+              </article>
+              <!-- #post-## --> </main>
+              <!-- #main -->
+            </div>
+            <!-- #primary -->
+          </div>
+
+<include file="Public:right"/>    <!--加载右边区域-->
+       
+<include file="Public:footer"/>

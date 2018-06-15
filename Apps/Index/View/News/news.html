@@ -1,0 +1,139 @@
+<include file="Public:header"/>
+
+<div id="content" class="site-content">
+           
+      <div> 
+              <!--路径导航-->
+                 <ol class="breadcrumb">
+            <li><a href="/"><span class="glyphicon glyphicon-home"> 首页</span></a></li>
+            <li><a href="{:U('news/'.$navinfo['id'])}">{$navinfo['title']}</a></li>
+            <li class="active">{$muinfo['title']}</li>
+          </ol>
+               <!--路径导航-->
+      </div>
+
+            <include file="Public:nav_list"/>  <!--二级导航-->
+
+      <div class="top-section" ></div>
+
+      <div class="container main-content-area" >
+        <div class="row">
+          <div class="main-content-inner col-sm-12 col-md-8 pull-left">
+
+            <div id="primary" class="content-area">
+              <main id="main" class="site-main" role="main">
+
+
+
+              <article id="post-5"
+                class="post-5 post type-post status-publish format-aside hentry category-informal-essay post_format-post-format-aside">
+                <div class="blog-item-wrap">
+                  <a href="" title="Hello"> </a>
+                  <div class="post-inner-content">
+                    <header class="entry-header page-header">
+                      <h3 class="entry-title">
+                        <a href="" rel="bookmark"><span class="glyphicon glyphicon-triangle-right"></span> {$muinfo['title']}</a>
+                      </h3>
+
+                    <if condition="$doc_list neq null">
+                      <div class="entry-meta">
+                         <style type="text/css">
+                              .panel-body a:hover{color:blue;}    
+                         </style>
+                            <!--文章列表-->
+                            <volist name="doc_list" id="vo">
+                              <div class="panel panel-default">
+                                <div class="panel-body">
+                                     <a href="{:U('show',array('id'=>$vo['id']))}" title="{$vo['title']}"><h4>{$vo['title']}</h4></a> 
+
+                                     <span style="float:right;">
+                                     <span class=" glyphicon glyphicon-time"></span>
+                                      <?php echo date('Y-m-d H:i:s',$vo['time'])?>
+                                      | 浏览量：{$vo['view']}  | 　<span class="glyphicon glyphicon-tag"></span><span class="label label-default"><?php echo $vo['article_type']?$vo['article_type']:'未填写'?></span>
+                                     </span>
+                                </div>
+                                <div class="panel-footer">
+                                <span class="glyphicon glyphicon-paperclip"></span> 
+                                <span style="color:#363636;">简介：</span><?php echo $vo['description']?$vo['description']:'暂无介绍';?></div>
+                              </div>
+                            </volist>
+                             <!--文章列表-->
+                      </div>
+                  <else/>
+                    <div style="margin-top:108px;font-size:14px;">
+                        <div style="color:#DA4453;text-align:center;">
+                             <span class="glyphicon glyphicon-hourglass"></span> 暂无数据，敬请期待...
+                        </div>
+                        <p style="margin-top:70px;"><span class="glyphicon glyphicon-search"></span> 您可以看看其他相关内容：</p>
+                        <ul class="list-group">
+                          <volist name="dian_more_list" id="vo">
+                              <li class="list-group-item">
+                                <span class="badge" title="浏览量" style="cursor: pointer;">{$vo['view']}</span>
+                                <a href="{:U('news/show',array('id'=>$vo['id']))}" title="{$vo['title']}" target="_blank">{$vo['title']}</a>
+                              </li>
+                          </volist>
+                        </ul>
+                        <p><span class="glyphicon glyphicon-screenshot"></span> 或者这些栏目：</p>
+                         <!--二级栏目-->
+                               <ul class="nav nav-pills" style="width:1130px;margin:0 auto;">
+                                 <volist name="snvlist" id="smu">
+                                    <if condition="$smu['is_nav'] eq 1">  <!--后台让其显示才显示-->
+                                        <li role="presentation" >
+                                        <a href="{:U('news/'.$navinfo['id'].'-'.$smu['id'])}">{$smu['title']}</a></li>
+                                      </if>
+                                    </volist>
+                              </ul>
+
+                    </div>
+                  </if>
+                      <!-- .entry-meta -->
+                    </header>
+                    <!-- .entry-header -->
+
+                    <div class="entry-content">
+
+
+
+                      <p >
+
+                      {$page}
+
+                      <!--分页
+                         <nav style="text-align:center;">
+                          <ul class="pagination">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                              </li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      <!--分页
+                      </p>
+
+                    </div>
+                    <!-- .entry-content -->
+                  </div>
+                </div>
+              </article>
+              <!-- #post-## --> </main>
+              <!-- #main -->
+            </div>
+            <!-- #primary -->
+
+          </div>
+
+<include file="Public:right"/>    <!--加载右边区域-->
+       
+
+<include file="Public:footer"/>
